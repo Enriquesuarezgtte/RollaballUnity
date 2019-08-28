@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private int contador;
+    private AudioSource audioRecoleccion;
     public Transform particulas;
+    public Text textUI;
+    public Text Award;
     private ParticleSystem systemaParticulas;
     private Vector3 position;
     public float speed;
@@ -17,7 +20,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         systemaParticulas = particulas.GetComponent<ParticleSystem>();
         systemaParticulas.Stop();
-        contador =12;
+        contador =0;
+        Award.text ="";
+        audioRecoleccion=GetComponent<AudioSource>();
+        textUI.text = "Contador: "+contador.ToString();
     }
 
     // Update is called once per frame
@@ -41,17 +47,21 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Recolectable")){
             Debug.Log(contador);
-            contador--;
-            if(contador!=0){
+            contador++;
+            textUI.text = "Contador: "+contador.ToString();
             position = other.gameObject.transform.position;
             particulas.position=position;
             systemaParticulas = particulas.GetComponent<ParticleSystem> ();
             systemaParticulas.Play();
             other.gameObject.SetActive(false);
+            audioRecoleccion.Play();
+            if(contador>=12){
+            Award.text="Ganaste";
+            
         }else{
             
              
-            SceneManager.LoadScene(1);
+           // SceneManager.LoadScene(1);
 
         }
     }
