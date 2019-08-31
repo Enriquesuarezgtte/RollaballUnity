@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Recolectable
+  - Amarillo
+  - Verde
+  - Rojo
+  - Azul
   layers:
   - Default
   - TransparentFX
