@@ -1,14 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CubeController : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    private float valorx;
+    private float valory;
+    private float valorz;
+    private Vector3 vectorInicial;
+    private Vector3 vectorCambio;
+    private Vector3 escala;
+    private Vector3 rotacion;
     public Material material;
+
+    public Slider sliderx;
+    public Slider slidery;
+    public Slider sliderz;
     void Start()
     {
+        vectorInicial = transform.position;
+        vectorCambio = transform.position;
+        valorx = vectorCambio.x;
+        valory = vectorCambio.y;
+        valorz = vectorCambio.z;
+        escala =transform.localScale;
+        rotacion = transform.eulerAngles;  
+        
+
         material=GetComponent<Renderer>().material;
         material.color = Color.black;
     }
@@ -25,6 +46,25 @@ public class CubeController : MonoBehaviour
 
     public void EscalarCubo(float value){
         transform.localScale = new Vector3(value, value, value);
+    }
+
+    public void MoverXCubo(float value){
+        transform.position = new Vector3(value, transform.position.y, transform.position.z);        
+    }
+     public void MoverYCubo(float value){
+        transform.position = new Vector3(transform.position.x, value, transform.position.z);        
+    }
+     public void MoverZCubo(float value){
+        transform.position = new Vector3(transform.position.x, transform.position.y, value);        
+    }
+
+    public void Reset(){
+        transform.Rotate(rotacion);
+        transform.localScale = (escala);
+        transform.position = vectorInicial;
+        sliderx.value = 0;
+        slidery.value = 0;
+        sliderz.value = 0;
     }
 
 
