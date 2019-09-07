@@ -21,17 +21,19 @@ public class CubeController : MonoBehaviour
     public Slider sliderz;
     void Start()
     {
-        vectorInicial = transform.position;
-        vectorCambio = transform.position;
+        
+        
+
+        material=GetComponent<Renderer>().material;
+        material.color = Color.black;
+        
+        vectorCambio = new Vector3(transform.position.x,transform.position.y, transform.position.z);
+
         valorx = vectorCambio.x;
         valory = vectorCambio.y;
         valorz = vectorCambio.z;
         escala =transform.localScale;
         rotacion = transform.eulerAngles;  
-        
-
-        material=GetComponent<Renderer>().material;
-        material.color = Color.black;
     }
 
     // Update is called once per frame
@@ -59,12 +61,15 @@ public class CubeController : MonoBehaviour
     }
 
     public void Reset(){
+        
         transform.Rotate(rotacion);
         transform.localScale = (escala);
-        transform.position = vectorInicial;
+    
         sliderx.value = 0;
+        Debug.Log(sliderx.value);
         slidery.value = 0;
         sliderz.value = 0;
+        transform.position = vectorCambio;
     }
 
 
