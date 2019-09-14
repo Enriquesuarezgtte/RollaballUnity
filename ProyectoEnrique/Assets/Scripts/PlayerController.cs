@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
             particulas.position=position;
             systemaParticulas = particulas.GetComponent<ParticleSystem> ();
             systemaParticulas.Play();
+            StartCoroutine(DetenerParticulas(systemaParticulas));
+
             other.gameObject.SetActive(false);
             audioRecoleccion.Play();
             if(contador>=12){
@@ -65,5 +67,9 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    }
+    public IEnumerator DetenerParticulas(ParticleSystem part){
+        yield return new WaitForSecondsRealtime(5);
+        part.Stop();
     }
 }
