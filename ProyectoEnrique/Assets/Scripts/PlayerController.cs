@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private ParticleSystem systemaParticulas;
     private Vector3 position;
     public float speed;
+    public GameObject CuboMovible;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         Award.text ="";
         audioRecoleccion=GetComponent<AudioSource>();
         textUI.text = "Contador: "+contador.ToString();
+        StartCoroutine("Movimiento");
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
             other.gameObject.SetActive(false);
             audioRecoleccion.Play();
-            if(contador>=12){
+            if(contador>=13){
             Award.text="Ganaste";
             
         }else{
@@ -71,5 +73,16 @@ public class PlayerController : MonoBehaviour
     public IEnumerator DetenerParticulas(ParticleSystem part){
         yield return new WaitForSecondsRealtime(5);
         part.Stop();
+    }
+
+    public IEnumerator Movimiento() {
+        for(;;){
+            if(Vector3.Distance(transform.position, CuboMovible.transform.position)<6f){
+                CuboMovible.transform.position=Vector3.Lerp(CuboMovible.transform.position,
+                new Vector3 (Random.Range(-10.0f,10.0f),0.97f, Random.Range(-10.0f,10.0f)),
+                20f*Time.deltaTime);
+            }
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
     }
 }
