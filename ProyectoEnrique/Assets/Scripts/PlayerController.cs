@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
         audioRecoleccion=GetComponent<AudioSource>();
         textUI.text = "Contador: "+contador.ToString();
         StartCoroutine("Movimiento");
-        StartCoroutine("DesaparecerCubo");
-        StartCoroutine("DesaparecerCubo5y3");
+      //  StartCoroutine("DesaparecerCubo");
+        //StartCoroutine("DesaparecerCubo5y3");
     }
 
     // Update is called once per frame
