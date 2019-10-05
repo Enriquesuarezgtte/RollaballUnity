@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 position;
     public float speed;
     public GameObject CuboMovible;
+    Animator animationMagic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +29,30 @@ public class PlayerController : MonoBehaviour
         audioRecoleccion=GetComponent<AudioSource>();
         textUI.text = "Contador: "+contador.ToString();
         StartCoroutine("Movimiento");
+        animationMagic = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetButtonDown("Fire1")){
+            animate();
+        }
     }
+
+    private void animate()
+    {
+        animationMagic.SetBool("isSendMagic", true);
+        StartCoroutine("Reiniciar");
+    }
+
+    public IEnumerator Reiniciar(){
+        yield return new WaitForSecondsRealtime(1.5f);
+        animationMagic.SetBool("isSendMagic", false);
+    }
+
+
+
     /// <summary>
     /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     /// </summary>
