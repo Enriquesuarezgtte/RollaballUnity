@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,21 @@ public class ControlDisparo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer+= Time.deltaTime;
+        if(timer>=TiempoEntreDisparos*effectsDisplayTime){
+            DisableEffects();
+        }
+    }
+
+    private void DisableEffects()
+    {
+        throw new NotImplementedException();
+    }
+
+    void Awake()
+    {
+        shootableMask = LayerMask.GetMask("Shootable");
+        gunLine = GetComponent<LineRenderer>();
+        gunLight=GetComponent<Light>();
     }
 }
