@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7195207040216898247}
   - component: {fileID: 7195207040216898246}
   - component: {fileID: 7195207040216898242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ObjectoRecolectable
   m_TagString: Recolectable
   m_Icon: {fileID: 0}
