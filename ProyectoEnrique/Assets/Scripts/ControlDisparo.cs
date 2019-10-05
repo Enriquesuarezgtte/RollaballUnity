@@ -35,7 +35,8 @@ public class ControlDisparo : MonoBehaviour
 
     private void DisableEffects()
     {
-        throw new NotImplementedException();
+        gunLine.enabled=false;
+        gunLight.enabled=false;
     }
 
     void Awake()
@@ -44,4 +45,25 @@ public class ControlDisparo : MonoBehaviour
         gunLine = GetComponent<LineRenderer>();
         gunLight=GetComponent<Light>();
     }
+
+    void Shoot(){
+        Vector3 ubicacion = new Vector3(Player.transform.position.x,
+        Player.transform.position.y+1.1f,
+        Player.transform.position.z);
+        timer =0f;
+        gunLine.enabled = true;
+        gunLight.enabled = true;
+        shootRay.origin = ubicacion;
+        shootRay.direction= transform.forward;
+        gunLine.SetPosition(0,ubicacion);
+        if(Physics.Raycast(shootRay, out shootHit, rango, shootableMask)){
+            Destroy(shootHit.collider.gameObject);
+            gunLine.SetPosition(1,shootHit.point);
+        }else{
+            Debug.Log("No se impactó con ningún objeto");
+            gunLine.SetPosition(1,shootRay.origin+shootRay.direction*rango);
+        }
+    }
+
+    
 }
