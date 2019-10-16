@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
     private int contador;
+    public GameObject poder;
     private AudioSource audioRecoleccion;
     public Transform particulas;
     public Text textUI;
@@ -51,13 +52,15 @@ public class PlayerController : MonoBehaviour
     }
 
     private void animate()
-    {
-        animationMagic.SetBool("isSendMagic", true);
+    {        
         StartCoroutine("Reiniciar");
     }
 
     public IEnumerator Reiniciar(){
+        animationMagic.SetBool("isSendMagic", true);
         yield return new WaitForSecondsRealtime(1.5f);
+        poder.transform.position = transform.position;
+        poder.SendMessage("Shoot");
         animationMagic.SetBool("isSendMagic", false);
     }
 

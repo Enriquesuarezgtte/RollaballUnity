@@ -57,7 +57,11 @@ public class ControlDisparo : MonoBehaviour
         shootRay.direction= transform.forward;
         gunLine.SetPosition(0,ubicacion);
         if(Physics.Raycast(shootRay, out shootHit, rango, shootableMask)){
-            Destroy(shootHit.collider.gameObject);
+         //   Destroy(shootHit.collider.gameObject);
+          ControlResistencia resistencia = shootHit.collider.gameObject.GetComponent<ControlResistencia>();
+          if(resistencia!=null){
+              resistencia.RegistrarImpacto(shootHit.point);
+          }
             gunLine.SetPosition(1,shootHit.point);
         }else{
             Debug.Log("No se impactó con ningún objeto");

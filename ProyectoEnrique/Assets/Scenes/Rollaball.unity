@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2041,6 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f4003f355310243b3ddae820cb22cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poder: {fileID: 0}
   particulas: {fileID: 871391805}
   textUI: {fileID: 1998906119}
   Award: {fileID: 924430322}
@@ -2676,6 +2677,7 @@ GameObject:
   - component: {fileID: 1839455135}
   - component: {fileID: 1839455136}
   - component: {fileID: 1839455137}
+  - component: {fileID: 1839455138}
   m_Layer: 0
   m_Name: Disparo
   m_TagString: Untagged
@@ -2830,6 +2832,21 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1839455138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839455134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b887796629629240a91faa3a8b50684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1033242363}
+  TiempoEntreDisparos: 1
+  rango: 100
 --- !u!1 &1851945541
 GameObject:
   m_ObjectHideFlags: 0
@@ -3029,6 +3046,11 @@ PrefabInstance:
       propertyPath: Cubo5y3segundos
       value: 
       objectReference: {fileID: 275096759}
+    - target: {fileID: 8805880486605233601, guid: 7737647c22c1fc64a88d5cd030c352ce,
+        type: 3}
+      propertyPath: poder
+      value: 
+      objectReference: {fileID: 1839455134}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
 --- !u!1 &1925615187
