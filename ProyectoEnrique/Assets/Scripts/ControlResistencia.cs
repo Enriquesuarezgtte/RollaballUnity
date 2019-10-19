@@ -22,4 +22,11 @@ public class ControlResistencia : MonoBehaviour
             Destroy(transform.gameObject);
         }
     }
+
+ 
+    void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("collision cubo");
+        Destroy(transform.gameObject);
+    }
 }

@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private int contadorColor;
     private bool recolected;
     private Material material;
+    public ParticleSystem poderPiso;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1")){
             animate();
+        }else if (Input.GetButton("Fire2")){
+            LanzarPoder();
         }
     }
 
@@ -170,5 +173,21 @@ public class PlayerController : MonoBehaviour
             }
             yield return new WaitForSecondsRealtime(0.1f);
         }
+    }
+
+    public IEnumerator LanzarPoderCoRoutine(){
+        animationMagic.SetBool("LanzandoPoder", true);
+        yield  return new WaitForSecondsRealtime(2.0f);
+        poderPiso.Play();
+        StartCoroutine("DetenerPoder");
+        animationMagic.SetBool("LanzandoPoder", false);
+    }
+
+    public void LanzarPoder(){
+        StartCoroutine("LanzarPoderCoRoutine");
+    }
+    public IEnumerator DetenerPoder(){
+        yield return new WaitForSecondsRealtime(2.0f);
+        poderPiso.Stop();
     }
 }
