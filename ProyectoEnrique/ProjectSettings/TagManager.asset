@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Recolectable
   - RecolectableR
+  - Jugador
   layers:
   - Default
   - TransparentFX
