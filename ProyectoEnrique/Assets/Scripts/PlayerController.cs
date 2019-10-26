@@ -197,15 +197,17 @@ public class PlayerController : MonoBehaviour
     public void LanzarPoderCircular(){
         StartCoroutine("LanzarPoderCircularCoRoutine");
     }
+
+
     public IEnumerator LanzarPoderCircularCoRoutine(){
         animationMagic.SetBool("LanzandoPoderCircular", true);
-        yield  return new WaitForSecondsRealtime(7.0f);
+        yield  return new WaitForSecondsRealtime(1.0f);
         poderCircular.Play();
         StartCoroutine("DetenerPoderCircular");
-        animationMagic.SetBool("LanzandoPoder", false);
+        animationMagic.SetBool("LanzandoPoderCircular", false);
     }
     public IEnumerator DetenerPoderCircular(){
-        yield return new WaitForSecondsRealtime(2.0f);
+        yield return new WaitForSecondsRealtime(7.0f);
         poderCircular.Stop();
     }
 }
