@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private bool recolected;
     private Material material;
     public ParticleSystem poderPiso;
+    
+    public ParticleSystem poderCircular;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
             animate();
         }else if (Input.GetButton("Fire2")){
             LanzarPoder();
+        }else if(Input.GetButton("Fire3")){
+            LanzarPoderCircular();
         }
     }
 
@@ -189,5 +193,19 @@ public class PlayerController : MonoBehaviour
     public IEnumerator DetenerPoder(){
         yield return new WaitForSecondsRealtime(2.0f);
         poderPiso.Stop();
+    }
+    public void LanzarPoderCircular(){
+        StartCoroutine("LanzarPoderCircularCoRoutine");
+    }
+    public IEnumerator LanzarPoderCircularCoRoutine(){
+        animationMagic.SetBool("LanzandoPoderCircular", true);
+        yield  return new WaitForSecondsRealtime(7.0f);
+        poderCircular.Play();
+        StartCoroutine("DetenerPoderCircular");
+        animationMagic.SetBool("LanzandoPoder", false);
+    }
+    public IEnumerator DetenerPoderCircular(){
+        yield return new WaitForSecondsRealtime(2.0f);
+        poderCircular.Stop();
     }
 }
