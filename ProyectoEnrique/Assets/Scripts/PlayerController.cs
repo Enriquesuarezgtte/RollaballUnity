@@ -210,4 +210,19 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(7.0f);
         poderCircular.Stop();
     }
+
+    public void GuardarPosicion(){
+        PlayerPrefs.SetFloat("PosicionX", transform.position.x);
+        PlayerPrefs.SetFloat("PosicionY", transform.position.y);
+        PlayerPrefs.SetFloat("PosicionZ", transform.position.z);
+    }
+
+
+    public void CargarPosicion(){
+        float posx = PlayerPrefs.GetFloat("PosicionX");
+        float posy = PlayerPrefs.GetFloat("PosicionY");
+        float posz = PlayerPrefs.GetFloat("PosicionZ");
+
+        transform.position = new Vector3(posx,posy,posz);
+    }
 }
