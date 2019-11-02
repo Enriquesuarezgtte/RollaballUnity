@@ -225,8 +225,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1907755469}
-        m_MethodName: GuardarPosicion
+      - m_Target: {fileID: 673524117}
+        m_MethodName: Guardar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4040,8 +4040,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1907755469}
-        m_MethodName: CargarPosicion
+      - m_Target: {fileID: 673524117}
+        m_MethodName: Cargar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4209,18 +4209,6 @@ PrefabInstance:
       objectReference: {fileID: 1655824054}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
---- !u!114 &1907755469 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8805880486605233601, guid: 7737647c22c1fc64a88d5cd030c352ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1907755468}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033242363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67f4003f355310243b3ddae820cb22cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1925615187
 GameObject:
   m_ObjectHideFlags: 0
